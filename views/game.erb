@@ -1,0 +1,36 @@
+<h2>Blackjack Game</h2>
+
+<p>Welcome, <%=session[:player_name] %>!</p>
+
+Your Cards:
+<ul>
+	<% session[:player_cards].each do |cards| %>
+		<%=cards.to_s%>
+	<% end %>
+</ul>
+
+<br/>
+
+Dealer's Cards
+<ul>
+	<% session[:dealer_cards].each do |cards| %>
+		<%=cards.to_s%>
+	<% end %>
+</ul>
+
+<br/>
+<p>
+	Your cards' total value: <%=cards_total(session[:player_cards]) %>
+	<br/>
+	What would you like to do? Hit or Stay?
+<%if @hit_or_stay %>
+<form action='/game/player/hit' method='post'>
+	<input type='submit' class='btn' value='Hit'>
+</form>
+<form action='/game/player/stay' method='post'>
+	<input type='submit' class='btn' value='Stay'>
+</form>
+<% end %>
+
+
+</p>
