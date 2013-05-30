@@ -1,0 +1,17 @@
+<h3>Make a bet</h3>
+
+<p>You have £<%=session[:bank].to_i %> </p>
+
+<%if session[:bank] == 0 %>
+<p>
+	<strong>Bankrupt! Play again?</strong>
+	<a href='/new_player' class='btn btn-success'>Yes</a>
+	<a href='/game_over' class='btn btn-danger'>No</a>
+</p>
+<% end %>
+
+
+<form action='/bet' method='post'>
+	<input type='text' name='bet_amount' />
+	<button type='submit' class='btn btn-primary'>Bet</button>
+</form>
